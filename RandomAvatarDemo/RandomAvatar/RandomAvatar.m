@@ -8,6 +8,8 @@
 
 #import "RandomAvatar.h"
 
+
+
 @implementation RandomAvatar
 
 + (UIImage *)randomAvatarWithDotColor:(UIColor *)dotColor backgroundColor:(UIColor *)bgColor diameter:(NSUInteger)diameter
@@ -21,13 +23,13 @@
     }
     
 
-    CGFloat dotDiameter = 10;
+    CGFloat dotDiameter = diameter/sqrt(2)/4;
     CGFloat margin = -1;
     
-    CGFloat totalW = dotDiameter * [self numberOfDotsWide];
+    CGFloat totalW = dotDiameter * [self numberOfDotsWidth];
     CGFloat totalH = dotDiameter * [self numberOfDotsHeight];
-    CGSize size  = CGSizeMake(totalW + ([self numberOfDotsWide]-1) * margin, totalH + ([self numberOfDotsHeight]-1) * margin);
-//    CGRect rect = (CGRect){CGPointZero, size};
+    CGSize size  = CGSizeMake(totalW + ([self numberOfDotsWidth] - 1) * margin, totalH + ([self numberOfDotsHeight] - 1) * margin);
+
 
     
     UIImage *avatar;
@@ -68,7 +70,8 @@
         
         if (highlightedColor != nil) {
             CGContextSetFillColorWithColor(context, highlightedColor.CGColor);
-            CGContextFillEllipseInRect(context, frame);
+//            CGContextFillEllipseInRect(context, frame);
+            CGContextFillRect(context, frame);
         }
         
         
@@ -134,7 +137,7 @@
 }
 
 
-+ (NSInteger)numberOfDotsWide
++ (NSInteger)numberOfDotsWidth
 {
     return 5;
 }
@@ -148,14 +151,14 @@
 + (NSArray *)randomCoordinate
 {
     NSInteger coorRow = [self numberOfDotsHeight];
-    NSInteger coorCol = [self numberOfDotsWide];
+    NSInteger coorCol = [self numberOfDotsWidth];
     
     NSMutableArray *rowArray = [NSMutableArray arrayWithCapacity:coorRow];
     for (int row = 0; row < coorRow; row ++) {
         
         NSMutableArray *colArray = [NSMutableArray arrayWithCapacity:coorCol];
         for (int col = 0; col < coorCol/2; col ++) {
-            int flag = arc4random()%2;
+            int flag = 1;//arc4random()%2;
             [colArray addObject:@(flag)];
         }
         NSArray *rightPart = [self reverseArray:colArray];

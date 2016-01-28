@@ -70,8 +70,8 @@
         
         if (highlightedColor != nil) {
             CGContextSetFillColorWithColor(context, highlightedColor.CGColor);
-//            CGContextFillEllipseInRect(context, frame);
-            CGContextFillRect(context, frame);
+            CGContextFillEllipseInRect(context, frame);
+//            CGContextFillRect(context, frame);
         }
         
         
@@ -158,7 +158,7 @@
         
         NSMutableArray *colArray = [NSMutableArray arrayWithCapacity:coorCol];
         for (int col = 0; col < coorCol/2; col ++) {
-            int flag = 1;//arc4random()%2;
+            int flag = arc4random()%2;
             [colArray addObject:@(flag)];
         }
         NSArray *rightPart = [self reverseArray:colArray];

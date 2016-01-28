@@ -24,16 +24,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    _imageView1.image = [RandomAvatar randomAvatarWithDotColor:[UIColor redColor] backgroundColor:[UIColor yellowColor] diameter:80];
-    
-    _imageView4.image = [RandomAvatar randomAvatarWithDotColor:[UIColor cyanColor] backgroundColor:[UIColor yellowColor] diameter:200];
+    [self change:nil];
 }
 
 - (IBAction)change:(id)sender {
     
     _imageView1.image = [RandomAvatar randomAvatarWithDotColor:RandomColor backgroundColor:RandomColor diameter:80];
+    _imageView2.image = [RandomAvatar randomAvatarWithDotColor:RandomColor backgroundColor:RandomColor diameter:80];
+    _imageView3.image = [RandomAvatar randomAvatarWithDotColor:RandomColor backgroundColor:RandomColor diameter:80];
     
     _imageView4.image = [RandomAvatar randomAvatarWithDotColor:RandomColor backgroundColor:RandomColor diameter:200];
+    
 }
 
 
